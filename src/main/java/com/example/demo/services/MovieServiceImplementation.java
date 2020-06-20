@@ -20,8 +20,4 @@ public class MovieServiceImplementation implements MovieService {
         movieRepository.deleteById(id);
     }
 
-    @Override
-    public void updateMovie(int id) {
-        movieRepository.save();
-    }
 }
