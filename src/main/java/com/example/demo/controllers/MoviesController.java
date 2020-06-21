@@ -13,22 +13,26 @@ public class MoviesController {
     @Autowired
     MovieService movieService;
 
+    //Create a new movie
     @RequestMapping(value = "/api/movies/add",method = RequestMethod.POST)
     public ResponseEntity<Object> createMovie(@RequestBody MoviesModel moviesModel){
         movieService.addMovie(moviesModel);
         return new ResponseEntity<>("Movie created",HttpStatus.CREATED);
     }
 
+    //Get all movies
     @RequestMapping(value = "/api/movies",method = RequestMethod.GET)
     public ResponseEntity<Object> getMovies(){
         return new ResponseEntity<>(movieService.getAllMovies(),HttpStatus.OK);
     }
 
+    //Get a single movie
     @RequestMapping(value = "/api/movies/{id}",method = RequestMethod.GET)
     public ResponseEntity<Object> getOneMovie(@PathVariable("id") Long id){
         return new ResponseEntity<>(movieService.getOneMovie(id),HttpStatus.OK);
     }
 
+    //Update a movie
     @RequestMapping(value = "/api/movies/update/{id}",method = RequestMethod.PUT)
     public ResponseEntity<Object> updateMovie(@PathVariable("id") Long id,@RequestBody MoviesModel moviesModel){
         moviesModel.setMovie_id(id);
@@ -36,16 +40,11 @@ public class MoviesController {
         return new ResponseEntity<>("Movie added",HttpStatus.OK);
     }
 
+    //Delete a movie
     @RequestMapping(value = "/api/movies/delete/{id}",method = RequestMethod.DELETE)
     public ResponseEntity<Object> deleteMovie(@PathVariable("id") Long id){
         movieService.deleteMovie(id);
         return new ResponseEntity<>("Movie deleted:",HttpStatus.OK);
     }
-
-
-
-
-
-
 
 }
