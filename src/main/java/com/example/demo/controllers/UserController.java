@@ -27,7 +27,7 @@ public class UserController {
 
     @RequestMapping(value = "/api/users/{id}",method = RequestMethod.GET)
     public ResponseEntity<Object> getUser(@PathVariable("id") Long id){
-        if(userService.getUser(id).isEmpty()){
+        if(!userService.getUser(id).isPresent()){
             throw new UserNotFoundException();
         }
         return new ResponseEntity<>(userService.getUser(id),HttpStatus.OK);
