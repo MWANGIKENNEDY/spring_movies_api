@@ -9,6 +9,6 @@ public interface MovieService {
     public void addMovie(MoviesModel moviesModel);
     public List<MoviesModel> getAllMovies();
     public Optional<MoviesModel> getOneMovie(Long id);
-    public void updateMovie(MoviesModel moviesModel,Long id);
+    public void updateMovie(MoviesModel moviesModel);
     public void deleteMovie(Long id);
 }

@@ -29,7 +29,7 @@ public class MovieServiceImplementation implements MovieService {
     }
 
     @Override
-    public void updateMovie(MoviesModel moviesModel, Long id) {
+    public void updateMovie(MoviesModel moviesModel) {
         movieRepository.save(moviesModel);
     }
 
