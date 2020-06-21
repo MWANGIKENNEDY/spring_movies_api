@@ -10,13 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class MoviesController {
 
-    @Autowired
-    UserService userService;
 
-    @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public ResponseEntity<Object> registerUser(@RequestBody UserModel userModel){
-        userService.registerUser(userModel);
-        return new ResponseEntity<>("User added.", HttpStatus.CREATED);
-    }
+
 
 }
