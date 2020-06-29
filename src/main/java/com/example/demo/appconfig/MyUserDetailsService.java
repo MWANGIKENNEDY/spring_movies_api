@@ -1,5 +1,8 @@
 package com.example.demo.appconfig;
 
+import java.util.Optional;
+
+import com.example.demo.models.UserModel;
 import com.example.demo.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +18,12 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // TODO Auto-generated method stub
-        userRepository.getUser(username);
+        Optional<UserModel> user=userRepository.getUser(username);
+
+        if(user==null){
+            throw new UsernameNotFoundException("User not found:");
+        }
+        return new MyUserDetails(user);
     }
 
 }
