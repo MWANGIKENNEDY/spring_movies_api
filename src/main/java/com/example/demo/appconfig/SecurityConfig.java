@@ -14,15 +14,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserDetailsService userDetailsService;
 
+    //Authentication
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
     }
 
+    //Authorization
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-       
-        super.configure(http);
+        http.authorizeRequests()
+        .antMatchers("/api/movies").hasRole("ADMIN")
+        .antMatchers("/").permitAll()
+        .and().formLogin();
     }
 
     @Bean
