@@ -9,16 +9,10 @@ import javax.persistence.Id;
 public class UserModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String user_name,user_email,user_password;
+    private Long user_id;
+    private String user_name,user_password,user_roles;
+    private boolean active;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getUser_name() {
         return user_name;
@@ -28,13 +22,6 @@ public class UserModel {
         this.user_name = user_name;
     }
 
-    public String getUser_email() {
-        return user_email;
-    }
-
-    public void setUser_email(String user_email) {
-        this.user_email = user_email;
-    }
 
     public String getUser_password() {
         return user_password;
@@ -42,5 +29,29 @@ public class UserModel {
 
     public void setUser_password(String user_password) {
         this.user_password = user_password;
+    }
+
+    public Long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getUser_roles() {
+        return user_roles;
+    }
+
+    public void setUser_roles(String user_roles) {
+        this.user_roles = user_roles;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

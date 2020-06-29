@@ -28,6 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         http.authorizeRequests()
         .antMatchers("/api/**","/h2/**").permitAll()
         .and().formLogin();
+
+        //h2 console configuration
         http.csrf().disable();
         http.headers().frameOptions().disable();
     }
@@ -36,5 +38,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     public PasswordEncoder passwordEncoder(){
         return NoOpPasswordEncoder.getInstance();
     }
-        
+
 }
